@@ -40,3 +40,42 @@ class Queue {
         return node.value;
     }
 }
+
+const starTrekQ = new Queue();
+
+starTrekQ.enqueue('Kirk');
+starTrekQ.enqueue('Spock');
+starTrekQ.enqueue('Uhura');
+starTrekQ.enqueue('Sulu');
+starTrekQ.enqueue('Checkov');
+
+function peek(Queue) {
+    if (Queue.first === null) {
+        return console.log('No items in queue');
+    }
+    return Queue.first.value;
+}
+
+function isEmpty(Queue) {
+    if (Queue.first === null) {
+        return console.log('Queue is empty');
+    }
+    else {
+        return console.log('Queue has items');
+    }
+}
+
+function display(Queue) {
+    if (Queue.first === null) {
+        return console.log('Queue is empty');
+    }
+    else if (Queue.first !== null) {
+        let previous = Queue.first; 
+        let curr = Queue.first.next;
+        let next = Queue.first.next.next;
+
+        if (next !== null) {
+            prev = next.next;
+        }
+    }
+}
