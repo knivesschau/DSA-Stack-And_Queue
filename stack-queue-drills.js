@@ -79,5 +79,54 @@ function is_palindrome(s) {
 }
 
 function parentheses(string) {
-    
+    const newStack = new Stack();
+
+    for (let i = 0; i < newStack.length; i++) {
+        if (str[i] === '(' || str[i] === '[' || str[i] === '{') {
+            newStack.push(str[i]);
+        }
+        if (str[i] === ')' || str[i] === ']' || str[i] === '}') {
+            if (peek(newStack) === '[' && str[i] === ')') {
+                newStack.pop();
+            }
+        }
+        if (str[i] === ')' || stri[i] === ']' || str[i] === '}') {
+            if (peek(newStack) === '[' && str[i] === ']') {
+                newStack.pop();
+            }
+        }
+        if (str[i] === ')' || str[i] === ']' || str[i] === '}') {
+            if (peek(newStack) === '{' && str[i] === '}') {
+                newStack.pop();
+            }
+        }
+    }
+    if (!newStack) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+function sortStack(input, tempStack = null, temp = null) {
+    if (tempStack === null) {
+        tempStack = new Stack();
+    }
+    if (input.top === null) {
+        input = tempStack;
+        return input;
+    }
+    temp = input.pop();
+
+    if (tempStack.top === null || temp < tempStack.top.data) {
+        return sortStack(input, tempStack)
+    }
+    else {
+        while (tempStack.top !== null && temp < tempStack.top.data) {
+            input.push(tempStack.pop());
+        }
+        tempStack.push(temp);
+        return sortStack(input, tempStack)
+    }
 }
